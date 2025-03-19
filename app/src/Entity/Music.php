@@ -31,7 +31,7 @@ class Music
     private ?string $author = null;
 
     #[ORM\ManyToOne(targetEntity: Category::class)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Category $category = null;
 
     #[ORM\PrePersist]
@@ -111,7 +111,7 @@ class Music
     {
         return $this->category;
     }
-    public function setCategory(?Category $category): static
+    public function setCategory(Category $category): static
     {
         $this->category = $category;
         return $this;
