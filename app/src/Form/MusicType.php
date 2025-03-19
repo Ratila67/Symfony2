@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Music;
+use App\Entity\Category;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,6 +23,11 @@ class MusicType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('author')
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'name',
+                'required' => false,
+            ])
         ;
     }
 

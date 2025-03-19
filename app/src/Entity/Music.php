@@ -30,6 +30,10 @@ class Music
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $author = null;
 
+    #[ORM\ManyToOne(targetEntity: Category::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
     #[ORM\PrePersist]
     public function setCreatedAtValue(): void
     {
@@ -101,6 +105,15 @@ class Music
     {
         $this->author = $author;
 
+        return $this;
+    }
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
         return $this;
     }
 }
