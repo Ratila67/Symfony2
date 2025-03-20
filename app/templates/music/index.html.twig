@@ -4,7 +4,26 @@
 
 {% block body %}
     <h1>Liste des musiques disponibles</h1>
-
+    <a href ="{{ path('app_music_new') }}">Ajouter une musique</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Artiste</th>
+                <th>Genre</th>
+                <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for music in musicsList %}
+                    <tr>
+                        <td>{{ music.name }}</td>
+                        <td>{{ music.author }}</td>
+                        <td>{{ music.category }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                            </table>
     <a href="{{ path('app_music_new') }}">Ajouter une musique</a>
 
     <ul>

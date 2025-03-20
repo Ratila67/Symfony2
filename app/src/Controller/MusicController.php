@@ -13,6 +13,10 @@ use App\Entity\Music;
 
 final class MusicController extends AbstractController
 {
+    public function __construct(private EntityManagerInterface $entityManager)
+    {
+        }
+        
     #[Route('/', name: 'app_music')]
     public function index(
         MusicRepository $musicRepo
